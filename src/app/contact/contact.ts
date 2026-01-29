@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 
@@ -10,6 +10,7 @@ import { FormsModule, NgForm } from '@angular/forms';
   styleUrl: './contact.css'
 })
 export class Contact {
+  showSuccessModal = signal(false);
   contactForm = {
     name: '',
     email: '',
@@ -24,18 +25,12 @@ export class Contact {
 
     // Handle form submission
     console.log('Form submitted:', this.contactForm);
-<<<<<<< Updated upstream
-    // You can add your form submission logic here (e.g., API call)
-
-    this.showSuccessModal = true;
+    this.showSuccessModal.set(true);
   }
 
   closeModal(form?: NgForm) {
-    this.showSuccessModal = false;
+    this.showSuccessModal.set(false);
     form?.resetForm();
     this.contactForm = { name: '', email: '', message: '' };
-=======
-    // You can add your form submission logic here
->>>>>>> Stashed changes
   }
 }
